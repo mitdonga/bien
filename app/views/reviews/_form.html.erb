@@ -1,0 +1,22 @@
+<%= form_for @review do |f| %>
+
+   <div>
+      <%= f.label :title, "Title: " %>
+      <%= f.text_field :title %>
+   </div>
+
+   <div>
+      <%= f.label :body, "Body: " %>
+      <%= f.text_area :body %>
+   </div>
+
+   <div>
+      <%= f.label :score, "Rating: " %>
+      <%= f.number_field :score, in: 1..10, step: 1 %>
+   </div>
+
+   <div>
+      <%= f.submit "Update Review"%>
+   </div>
+
+<% end %>

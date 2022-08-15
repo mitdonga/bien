@@ -1,0 +1,8 @@
+<h1>All Reviews</h1>
+<% @reviews.each do |review| %>
+<div>
+   <h2><%= review.title %> (<%= review.score %>/10)</h2>
+   <p><%= review.body %></p>
+   <%= link_to "Read More",  review_path(review) %>
+</div>
+<% end %>
