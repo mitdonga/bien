@@ -50,11 +50,12 @@ main {
 }
 
 footer {
-   position: absolute;
-   left: 0;
-   bottom: 0;
+   position: fixed;
+   left: 0px;
+   bottom: 0px;
    font-size: 18px;
    color: #999999;
+   text-align: center;
 }
 
 label {
@@ -80,4 +81,12 @@ textarea {
 
 .container {
    margin: 0px 30px;
+}
+
+.errors {
+   color: red;
+
+   li {
+      list-style: none;
+   }
 }
