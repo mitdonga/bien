@@ -1,6 +1,5 @@
 class ReviewsController < ApplicationController
   def index
-
     price = params[:priceFtr]
     price_max = params[:priceFtrMax]
     @reviews = (price ?  Review.where("price >= ? AND price <= ?", price, price_max).order("score DESC") : Review.all.order("score DESC"))
@@ -22,7 +21,6 @@ class ReviewsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-
   end
 
   def edit
@@ -55,5 +53,5 @@ class ReviewsController < ApplicationController
   def comment_params
     params.require(:comment).premit(:comment, :commenter)
   end
-  
+s
 end
