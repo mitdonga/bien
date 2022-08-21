@@ -1,10 +1,13 @@
 <% content_for :page_title, "All Reivews - " %>
 
 <h1>All Reviews</h1>
+<p>Filter By: <%= link_to "$1-$99", root_path(priceFtr: 0, priceFtrMax: 99)%> <%= link_to "$100-$499", root_path(priceFtr: 100, priceFtrMax: 499)%> <%= link_to "$500-$999", root_path(priceFtr: 500, priceFtrMax: 999)%></p>
 <% @reviews.each do |review| %>
 <div>
-   <h2><%= review.title %> (<%= review.score %>/10)</h2>
-   <p><%= review.body %></p>
-   <%= link_to "Read More",  review_path(review) %>
+   <%= link_to review_path(review) do %>
+      <h2><%= review.title %> (<%= review.score %>/10)</h2>
+      <p><%= pluralize review.comments.count, "comment" %> </p>
+   <% end %>
+   
 </div>
 <% end %>

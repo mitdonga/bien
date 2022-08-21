@@ -1,32 +1,23 @@
-<%= form_for @review do |f| %>
-
-   <% if @review.errors.any? %>
-      <div class="errors">
-         <% @review.errors.full_messages.each do |e| %>
-            <ul>
-               <li><%= e %></li>
-            </ul>
-         <% end %>
-      </div>
-   <% end %>
-
-   <div>
-      <%= f.label :title, "Title: " %>
-      <%= f.text_field :title %>
+<% if @review.errors.any? %>
+   <div class="errors">
+      <% @review.errors.full_messages.each do |e| %>
+         <ul>
+            <li><%= e %></li>
+         </ul>
+       <% end %>
    </div>
+<% end %>
 
-   <div>
-      <%= f.label :body, "Body: " %>
-      <%= f.text_area :body %>
-   </div>
+<%= simple_form_for @review do |f| %>
+  <%= f.input :title %>
+  <%= f.input :restaurant %>
+  <%= f.input :body %>
+  <%= f.input :score %>
+  <%= f.input :phone_number %>
+  <%= f.input :address %>
+  <%= f.input :ambiance %>
+  <%= f.input :price %>
+  <%= f.input :cuisine %>
 
-   <div>
-      <%= f.label :score, "Rating: " %>
-      <%= f.number_field :score, in: 1..10, step: 1 %>
-   </div>
-
-   <div>
-      <%= f.submit "Update Review"%>
-   </div>
-
+  <%= f.button :submit %>
 <% end %>

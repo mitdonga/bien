@@ -1,7 +1,47 @@
 <%= content_for :page_title, @review.title + " - " %>
 
 <h1><%= @review.title %></h1>
-<h2>Rating: <%= @review.score %>/10</h2>
+
+<h3>Restaurant Name: <%= @review.restaurant %></h3>
+
+<h3>Rating: <%= @review.score %>/10</h3>
+
+<% if @review.phone_number.present? %>
+   <h3>Phone Number: <%= @review.phone_number %></h3>
+<% end %>
+
+<% if @review.ambiance.present? %>
+   <h3>Ambiance: <%= @review.ambiance %></h3>
+<% end %>
+
+<% if @review.price.present? %>
+   <h3>Price : $<%= @review.price %></h3>
+<% end %>
+
+<% if @review.cuisine.present? %>
+   <h3>Cuisine: <%= @review.cuisine %></h3>
+<% end %>
+
 <p><%= simple_format @review.body %></p>
+
 <%= link_to "Edit Review", edit_review_path(@review) %>
 <%= link_to "Delete Review", review_path(@review), data: {turbo_method: :delete, turbo_conform: "Are you sure?"} %>
+
+<hr>
+<h3>Add Comment</h3>
+<div>
+   <%= simple_form_for [@review, Comment.new] do |f| %>
+      <%= f.input :commenter %>
+      <%= f.input :comment %>
+      <%= f.button :submit %>
+   <% end %>
+</div>
+<% @comments.order("updated_at desc").each do |comment| %>
+   <div>
+      <h3><%= comment.commenter%> (Posted at: <%= time_ago_in_words comment.updated_at%> ago)</h3>
+      <p><%= comment.comment%></p>
+      <%= link_to "Edit Comment", edit_review_comment_path(@review, comment) %>
+      <%= link_to "Delete", review_comment_path(@review, comment), data: {turbo_method: :delete} %>
+   </div>
+   <% end %>
+<%= link_to "Add Comment", new_review_comment_path(@review) %>

@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_14_131117) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_19_133115) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.string "commenter"
+    t.string "comment"
+    t.bigint "review_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_comments_on_review_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -20,6 +32,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_14_131117) do
     t.string "cuisine"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "phone_number"
+    t.string "ambiance"
+    t.text "address"
+    t.float "latitude"
+    t.float "longitude"
   end
 
+  add_foreign_key "comments", "reviews"
 end

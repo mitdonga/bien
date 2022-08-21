@@ -73,3 +73,6 @@ end
 
 
 gem 'sass-rails'
+gem 'geocoder'
+gem 'simple_form'
+gem 'pg'

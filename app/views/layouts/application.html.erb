@@ -11,26 +11,28 @@
   </head>
 
   <body>
-    <header>
-      <nav>
-        <h1>
-          <%= link_to root_path do %>
-            <%= image_tag "bien-logo.svg"%>
-          <% end %>
-        </h1>
-      </nav>
-      <nav>
-        <%= link_to "Add Review", new_review_path %>
-      </nav>
-    </header>
+  <div id="page-container">
+    <div id="content-wrap">
+      <header>
+        <nav>
+          <h1>
+            <%= link_to root_path do %>
+              <%= image_tag "bien-logo.svg"%>
+            <% end %>
+          </h1>
+        </nav>
+        <nav>
+          <%= link_to "Add Review", new_review_path %>
+        </nav>
+      </header>
 
-    <div class= "container">
-      <%= yield %>
+      <div class= "container">
+        <%= yield %>
+      </div>
     </div>
-
-    <footer>
+    <footer id="footer">
      Copyright &copy; 2022 - Bien Reviews
     </footer>
-
+  </div>
   </body>
 </html>
