@@ -75,4 +75,7 @@ end
 gem 'sass-rails'
 gem 'geocoder'
 gem 'simple_form'
-gem 'pg'
+
+group :production do
+  gem 'pg'
+end
