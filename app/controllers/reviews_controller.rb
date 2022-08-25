@@ -53,5 +53,5 @@ class ReviewsController < ApplicationController
   def comment_params
     params.require(:comment).premit(:comment, :commenter)
   end
-s
+
 end
