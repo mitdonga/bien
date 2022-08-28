@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  before_action :check_login, except: [:index, :show]
+
   def new
     @review = Review.find(params[:review_id])
     @comment = @review.comments.new
@@ -8,6 +10,7 @@ class CommentsController < ApplicationController
   def create
     @review = Review.find(params[:review_id])
     @comment = @review.comments.new(comment_params)
+    @comment.user = @current_user
 
     if @comment.save
       redirect_to review_path(@review)
@@ -24,8 +27,10 @@ class CommentsController < ApplicationController
   def destroy
     @review = Review.find(params[:review_id])
     @comment = @review.comments.find(params[:id])
-    @comment.destroy
-    redirect_to review_path(@review), status: :see_other
+    if @comment.user = @current_user
+      @comment.destroy
+      redirect_to review_path(@review), status: :see_other
+    end
   end
 
   private

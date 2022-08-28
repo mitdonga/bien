@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
         if is_logged_in?
             @current_user = User.find(session[:user_id])
         else
+            puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>> You are not the writer of this review or comment <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
             @current_user = nil
         end
     end

@@ -6,7 +6,7 @@
 <div>
    <%= link_to review_path(review) do %>
       <h2><%= review.title %> (<%= review.score %>/10)</h2>
-      <p><%= pluralize review.comments.count, "comment" %> </p>
+      <p>Posted By: <%= review.user.full_name %>&#160;&#160;&#160;(<%= pluralize review.comments.count, "comment" %>) </p>
    <% end %>
    
 </div>

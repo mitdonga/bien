@@ -1,6 +1,7 @@
 <%= content_for :page_title, @review.title + " - " %>
 
 <h1><%= @review.title %></h1>
+<p>Review Posted By: <%= link_to @review.user.full_name, user_path(@review.user) %></p>
 
 <h3>Restaurant Name: <%= @review.restaurant %></h3>
 
@@ -23,10 +24,10 @@
 <% end %>
 
 <p><%= simple_format @review.body %></p>
-
-<%= link_to "Edit Review", edit_review_path(@review) %>
-<%= link_to "Delete Review", review_path(@review), data: {turbo_method: :delete, turbo_conform: "Are you sure?"} %>
-
+<% if (@review.user ==  @current_user) %>
+   <%= link_to "Edit Review", edit_review_path(@review) %>
+   <%= link_to "Delete Review", review_path(@review), data: {turbo_method: :delete, turbo_conform: "Are you sure?"} %>
+<% end %>
 <hr>
 <h3>Add Comment</h3>
 <div>
@@ -40,8 +41,11 @@
    <div>
       <h3><%= comment.commenter%> (Posted at: <%= time_ago_in_words comment.updated_at%> ago)</h3>
       <p><%= comment.comment%></p>
-      <%= link_to "Edit Comment", edit_review_comment_path(@review, comment) %>
-      <%= link_to "Delete", review_comment_path(@review, comment), data: {turbo_method: :delete} %>
+      <p>Posted By: <%= link_to comment.user.full_name, user_path(comment.user) %>&#160;&#160;&#160;</p>
+      <% if (comment.user ==  @current_user) %>
+         <%= link_to "Edit Comment", edit_review_comment_path(@review, comment) %>
+         <%= link_to "Delete", review_comment_path(@review, comment), data: {turbo_method: :delete} %>
+      <% end %>
    </div>
 <% end %>
 <%= link_to "Add Comment", new_review_comment_path(@review) %>

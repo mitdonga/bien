@@ -14,11 +14,12 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @review = Review.new
+      @review = Review.new
   end
 
   def create
     @review = Review.new(review_params)
+    @review.user = @current_user
     if @review.save
       redirect_to @review
     else
@@ -28,22 +29,30 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
+    if @review.user != @current_user
+      redirect_to root_path
+    end
   end
 
   def update
     @review = Review.find(params[:id])
-    if @review.update(review_params)
-      redirect_to review_path(@review)
-    else
-      render :edit, status: :unprocessable_entity
+    if @review.user == @current_user
+      if @review.update(review_params)
+        redirect_to review_path(@review)
+      else
+        render :edit, status: :unprocessable_entity
+      end
+    else 
+      redirect_to root_path
     end
   end
 
   def destroy
     @review = Review.find(params[:id])
-    @review.destroy
-
-    redirect_to root_path, status: :see_other
+    if @review.user == @current_user
+      @review.destroy
+      redirect_to root_path, status: :see_other
+    end 
   end
 
 
