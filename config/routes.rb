@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  get 'comments/show'
-  get 'comments/new'
-  get 'comments/edit'
+  resources :users
   resources :reviews do
     resources :comments
   end
+  resource :session
   root 'reviews#index'
 end

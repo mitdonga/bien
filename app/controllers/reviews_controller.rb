@@ -1,4 +1,7 @@
 class ReviewsController < ApplicationController
+
+  before_action :check_login, except: [:index, :show]
+
   def index
     price = params[:priceFtr]
     price_max = params[:priceFtrMax]
