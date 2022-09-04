@@ -5,13 +5,13 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-
+# Bookmark.destroy_all
 Review.destroy_all
 
 number_of_reviews_added = 0
 # number_of_reviews_added = 0
 # User.all.each do |user|
-30.times do 
+15.times do 
    review = Review.new(title: Faker::Restaurant.review, body: Faker::Lorem.sentence(word_count: rand(50..200)), score: rand(5..10), restaurant: Faker::Restaurant.name , price: rand(10..500), cuisine: Faker::Restaurant.type, phone_number: Faker::PhoneNumber.cell_phone, ambiance: Faker::Restaurant.type, address: Faker::Address.full_address)
    review.user = User.order('RANDOM()').first
    if review.save

@@ -82,3 +82,9 @@ end
 
 gem 'faker'
 gem "bcrypt"
+gem 'carrierwave'
+gem 'mini_magick'
+gem "fog-aws"
+gem 'carrierwave-aws'
+gem 'aws-sdk-rails'
+gem 'figaro'

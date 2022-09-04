@@ -1,9 +1,5 @@
 class SessionsController < ApplicationController
 
-    def new
-
-    end
-
     def create
         @form_data = params.require(:session)
         @user_name = @form_data[:user_name]
