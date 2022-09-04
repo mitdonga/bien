@@ -88,3 +88,10 @@ gem "fog-aws"
 gem 'carrierwave-aws'
 gem 'aws-sdk-rails'
 gem 'figaro'
+
+gem 'activeadmin'
+# Plus integrations with:
+gem 'devise'
+gem 'cancancan'
+gem 'draper'
+gem 'pundit'

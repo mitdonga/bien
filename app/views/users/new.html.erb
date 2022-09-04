@@ -1,5 +1,21 @@
 <h1>Sign Up</h1>
 
+<%# if @user.errors.any? %>
+   <div class="errors">
+      <% @user.errors.full_messages.each do |e| %>
+         <ul>
+            <li><%#= e %></li> 
+         </ul>
+       <% end %>  
+   </div> 
+<%# end %> 
+
+<% flash.each do |key, value| %>  
+  <%= content_tag(:div, class: "errors") do %>  
+    <p><%= value %></p>  
+  <% end %>  
+<% end %>  
+
 <%= simple_form_for @user do |f| %>
     <%= f.input :user_name %>
     <%= f.input :full_name %>

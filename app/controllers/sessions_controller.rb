@@ -1,5 +1,9 @@
 class SessionsController < ApplicationController
 
+		def new
+			
+		end
+
     def create
         @form_data = params.require(:session)
         @user_name = @form_data[:user_name]
@@ -8,12 +12,10 @@ class SessionsController < ApplicationController
         @user =  User.find_by(user_name: @user_name).try(:authenticate, @password)
         
         if @user
-            @error = nil
             session[:user_id] = @user.id
             redirect_to root_path
-        else
-            @error = "User Authentication Failed"
-            render :new
+        else						
+            redirect_to new_session_path, notice: 'User Authentication Failed, Please Try Again' 
         end
     end
 

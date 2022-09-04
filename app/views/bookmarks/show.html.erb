@@ -1,6 +1,10 @@
-<h1>
-    Hey <%= @current_user.full_name %>, You bookmarks are as follow...
-</h1>
+<div> 
+		<% if @current_user.bookmarks.any? %>
+			<h1>Hey <%= @current_user.full_name %>, You bookmarks are as follow...</h1>
+		<% else %>
+			<h1>You haven't bookmarked anything...</h1>
+		<% end %>
+</div>
 <ol>
     <% @bookmarks.each do |b| %>
     <h2> <li> <%= link_to b.review.title, review_path(b.review) %> </li></h2>

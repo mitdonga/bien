@@ -1,5 +1,11 @@
 <h1>Log In</h1>
-<p><%= @error %></p>
+
+<% flash.each do |key, value| %>  
+  <%= content_tag(:div, class: "errors") do %>  
+    <p><%= value %></p>  
+  <% end %>  
+<% end %>  
+
 <%= simple_form_for :session, url: session_path do |f| %>
     <%= f.input :user_name %>
     <%= f.input :password %>

@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to users_path
     else
-      render 'new'
+      redirect_to new_user_path, notice: 'Please Enter Valid Setails To Sign Up' 
     end
   end
 
