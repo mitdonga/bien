@@ -1,0 +1,16 @@
+<%= image_tag('bien-home.jpg', class: "home-img" ) %>
+
+<h1> Top Rated Restaurant Reviews</h1>
+<div class="flex-container">
+		<%= render partial: 'review', collection: @highly_rated_reviews %>
+</div>
+
+<h1> Most Recent Reviews</h1>
+<div class="flex-container">
+	<%= render partial: 'review', collection: @recent_reviews %>
+</div>
+
+<h1> Featured Reviews</h1>
+<div class="flex-container">
+		<%= render partial: 'review', collection: @featured_reviews %>
+</div>

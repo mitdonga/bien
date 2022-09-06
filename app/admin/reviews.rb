@@ -5,7 +5,7 @@ ActiveAdmin.register Review do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :title, :body, :score, :restaurant, :price, :cuisine, :phone_number, :ambiance, :address, :latitude, :longitude, :user_id, :review_image
+  permit_params :title, :body, :score, :restaurant, :price, :cuisine, :phone_number, :ambiance, :address, :latitude, :longitude, :user_id, :review_image, :is_featured
   #
   # or
   #

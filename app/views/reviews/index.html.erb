@@ -5,7 +5,7 @@
 <% @reviews.each do |review| %>
 <div>
    <%= link_to review_path(review) do %>
-      <h2><%= review.title %> (<%= review.score %>/10)</h2>
+      <h2><%= truncate review.title, length: 150 %> (<%= review.score %>/10)</h2>
 			<%= image_tag(review.review_image.thumbnail.url) if review.review_image.present? %>
       <p>Posted By: <%= review.user.full_name %>&#160;&#160;&#160;(<%= pluralize review.comments.count, "comment" %>) </p>
    <% end %>

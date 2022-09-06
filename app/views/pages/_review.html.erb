@@ -1,0 +1,7 @@
+<div>
+   <%= link_to review_path(review) do %>
+			<%= image_tag(review.review_image.thumbnail.url) if review.review_image.present? %>
+      <h2><%= truncate review.title, length: 100 %> (<%= review.score %>/10)</h2>
+      <p>Posted By: <%= review.user.full_name %>&#160;&#160;&#160;(<%= pluralize review.comments.count, "comment" %>) </p>
+   <% end %>
+</div>
