@@ -15,6 +15,7 @@ class BookmarksController < ApplicationController
     @bookmark = @review.bookmarks.new
     @bookmark.user = @current_user
     if @bookmark.save
+			flash[:success] = "This Review Is Bookmarked"
       redirect_to review_path(@review)
     end
   end
@@ -23,6 +24,7 @@ class BookmarksController < ApplicationController
     @review = Review.find(params[:review_id])
     @bookmark = @review.bookmarks.where(user: @current_user)
     if @bookmark.destroy_all
+			flash[:success] = "This Review Successfully is removed"
       redirect_to review_path(@review), status: :see_other
     end
   end

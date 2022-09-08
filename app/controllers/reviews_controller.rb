@@ -21,6 +21,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user = @current_user
     if @review.save
+			flash[:success] = "Review created successfully"
       redirect_to @review
     else
       render :new, status: :unprocessable_entity
@@ -38,6 +39,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     if @review.user == @current_user
       if @review.update(review_params)
+				flash[:success] = "This Review updated successfully"
         redirect_to review_path(@review)
       else
         render :edit, status: :unprocessable_entity
@@ -51,6 +53,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     if @review.user == @current_user
       @review.destroy
+			flash[:success] = "Review deleted successfully"
       redirect_to root_path, status: :see_other
     end 
   end

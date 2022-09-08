@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
     @comment.user = @current_user
 
     if @comment.save
+			flash[:success] = "Comment added successfully"
       redirect_to review_path(@review)
     end
   end
@@ -29,6 +30,7 @@ class CommentsController < ApplicationController
     @comment = @review.comments.find(params[:id])
     if @comment.user = @current_user
       @comment.destroy
+			flash[:success] = "Comment deleted"
       redirect_to review_path(@review), status: :see_other
     end
   end

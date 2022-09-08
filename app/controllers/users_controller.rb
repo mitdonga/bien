@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       redirect_to users_path
+			flash[:success] = "Welcome to bien, #{@user.full_name}"
     else
       redirect_to new_user_path, notice: 'Please Enter Valid Setails To Sign Up' 
     end

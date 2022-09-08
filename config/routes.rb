@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resource :bookmark
   end
   resource :session
+  resource :account
   root 'pages#home'
 	get 'about', to: 'pages#about'
 	get 'terms-and-conditions', to: 'pages#terms_and_conditions'

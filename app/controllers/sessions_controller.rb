@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
         
         if @user
             session[:user_id] = @user.id
+						flash[:success] = "Welcome to bien, #{@user.full_name}"
             redirect_to root_path
         else						
             redirect_to new_session_path, notice: 'User Authentication Failed, Please Try Again' 
